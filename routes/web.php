@@ -35,10 +35,11 @@ Route::get('/', function () {
 //"connect.sid"=>"s%3ADsPgwje02w33uAPuHJBIV-TIsZMwlw6b.leJrAu%2FP9CoH9vzzfu11TZm2EUe7FwSZ6DWOc5HfgYc;"
 
 Route::get('/dcc', function (){
+
     dd(Http::withCookies([
-        "AWSALB"=>"Rf8rhzw4McnRi6LLGG1M0WCwrG0Amxy6rZwVtCC9tO95HaLWMKUc/LgULKsV1IAPGML6IboF3rigyy7X2Ow1kgewwAa5HItFGAmzqMlVd4kqaPMPBI9W6a3b5Wbz;",
-        "AWSALBCORS"=>"Rf8rhzw4McnRi6LLGG1M0WCwrG0Amxy6rZwVtCC9tO95HaLWMKUc/LgULKsV1IAPGML6IboF3rigyy7X2Ow1kgewwAa5HItFGAmzqMlVd4kqaPMPBI9W6a3b5Wbz;",
-        "connect.sid"=>"s%3A7jAl7YhvtYgODaJg3qF-QG-XL5-ua_UR.a9TgHenJA%2Bum%2BESp5VwXF%2B9pQ0ynPNu7YsvbMqDgorM;"
+        "AWSALB"=>env('AWSALB'),
+        "AWSALBCORS"=>env('AWSALBCORS'),
+        "connect.sid"=>env('CONNECTSID')
         ],"dcc.ext.hp.com")
         ->get('https://dcc.ext.hp.com/list/device?detail=1&displayLength=5&length=5&search=MXBCN3R467&sequence=1&start=0&type=device')
         ->json()
