@@ -41,7 +41,7 @@ Route::get('/dcc', function (){
         "AWSALBCORS"=>env('AWSALBCORS'),
         "connect.sid"=>env('CONNECTSID')
         ],"dcc.ext.hp.com")
-        ->get('https://dcc.ext.hp.com/list/device?detail=1&displayLength=5&length=5&search=MXBCN3R467&sequence=1&start=0&type=device')
+        ->get(env('URL'))
         ->json()
     );
 
