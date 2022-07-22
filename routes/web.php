@@ -23,6 +23,7 @@ Route::get('/', function () {
 // https://dcc.ext.hp.com/ui/service-orders/list?customerId=5f34730888f6e10012fcbd0d&itemId=2c92808273b8db1a0173eff2a2c000b8&kits=false //DIVEMOTOR
 // https://dcc.ext.hp.com/ui/service-orders/list?customerId=59f347a25da9bfa341c46130&itemId=2c92808579eecc0a0179f23d423900c4&kits=false //DHL
 // https://dcc.ext.hp.com/list/customer/preSearch?search=MXBCM9R21X&sequence=1
+// https://dcc.ext.hp.com/ui/login
 
 //COKIEE DIVEMOTOR
 //"AWSALB"=>"Rf8rhzw4McnRi6LLGG1M0WCwrG0Amxy6rZwVtCC9tO95HaLWMKUc/LgULKsV1IAPGML6IboF3rigyy7X2Ow1kgewwAa5HItFGAmzqMlVd4kqaPMPBI9W6a3b5Wbz;"
@@ -30,19 +31,16 @@ Route::get('/', function () {
 // "connect.sid"=>"s%3A7jAl7YhvtYgODaJg3qF-QG-XL5-ua_UR.a9TgHenJA%2Bum%2BESp5VwXF%2B9pQ0ynPNu7YsvbMqDgorM;"
 
 //COKIEE DHL
-//"AWSALB"=>"GXaIHMThFBEhZyZMI9krtPLi++ABc8o6hEFJAPY4ybMKBFcYv4BgsGmwkMaXz/os0X96ttxj/BGhu2FG7g8oy3nTZNsP+qOqGltLzUDlYucPlb3GpYMz+57AhKbB;"
-//"AWSALBCORS"=>"GXaIHMThFBEhZyZMI9krtPLi++ABc8o6hEFJAPY4ybMKBFcYv4BgsGmwkMaXz/os0X96ttxj/BGhu2FG7g8oy3nTZNsP+qOqGltLzUDlYucPlb3GpYMz+57AhKbB;"
-//"connect.sid"=>"s%3ADsPgwje02w33uAPuHJBIV-TIsZMwlw6b.leJrAu%2FP9CoH9vzzfu11TZm2EUe7FwSZ6DWOc5HfgYc;"
+
+//AWSALB=K9M15+zKPi1WvXKcOJrnK7UiNG5MEYcVz3tDt4SdnSiugPsdIko7XDVnUaVuhhQUsX85W+0dJXnApcWWNS6pReZpQKvH69jcHGmeX2+kPXEh3Vj0WzaVcxDa23KZ;
+//AWSALBCORS=K9M15+zKPi1WvXKcOJrnK7UiNG5MEYcVz3tDt4SdnSiugPsdIko7XDVnUaVuhhQUsX85W+0dJXnApcWWNS6pReZpQKvH69jcHGmeX2+kPXEh3Vj0WzaVcxDa23KZ;
+//CONNECTSID=s%3AlKJg5QNG5Y6Tzdd-lblGMybkTcgwtR0S.vjcANQEvCNAWYcbNKPMo4J6zhhFsL20gY6%2BSuIbGSJQ;
 
 Route::get('/dcc', function (){
-
     dd(Http::withCookies([
-        "AWSALB"=>env('AWSALB'),
-        "AWSALBCORS"=>env('AWSALBCORS'),
-        "connect.sid"=>env('CONNECTSID')
+            "connect.sid"=>env('SID')
         ],"dcc.ext.hp.com")
         ->get(env('URL'))
         ->json()
     );
-
 });
