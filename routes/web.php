@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +23,7 @@ Route::get('/', function () {
 // https://dcc.ext.hp.com/list/device?detail=1&displayLength=5&length=5&search=MXBCM9R1ZM&sequence=4&start=0&type=device
 // https://dcc.ext.hp.com/ui/service-orders/list?customerId=5f34730888f6e10012fcbd0d&itemId=2c92808273b8db1a0173eff2a2c000b8&kits=false //DIVEMOTOR
 // https://dcc.ext.hp.com/ui/service-orders/list?customerId=59f347a25da9bfa341c46130&itemId=2c92808579eecc0a0179f23d423900c4&kits=false //DHL
-// https://dcc.ext.hp.com/list/customer/preSearch?search=MXBCM9R21X&sequence=1
+// https://dcc.ext.hp.com/list/customer/preSearch?search=MXBCN3R45X&sequence=1
 // https://dcc.ext.hp.com/ui/login
 
 //COKIEE DIVEMOTOR
@@ -37,10 +38,12 @@ Route::get('/', function () {
 //CONNECTSID=s%3AlKJg5QNG5Y6Tzdd-lblGMybkTcgwtR0S.vjcANQEvCNAWYcbNKPMo4J6zhhFsL20gY6%2BSuIbGSJQ;
 
 Route::get('/dcc', function (){
-    dd(Http::withCookies([
+    $data = Http::withCookies([
             "connect.sid"=>env('SID')
         ],"dcc.ext.hp.com")
-        ->get(env('URL'))
-        ->json()
-    );
+        ->get(env('URL_CUSTOMER_CURRENT'))
+        ->json();
+    //$status = $data['loggedIn'] ? 'Activa' : 'Expiro';
+    //return "Estado de la sesion es: {$status}";
+    return $data;
 });
