@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Livewire\ShowDevices;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/devices', ShowDevices::class );
+
+Route::get('/sites', [\App\Http\Controllers\SitesController::class, 'index'])
+    ->middleware('auth')
+    ->name('index');
 // Customer ID 59f347a25da9bfa341c46130 (DHL)
 //
 // https://dcc.ext.hp.com/list/device?detail=1&displayLength=5&length=5&search=MXBCM9R1ZM&sequence=4&start=0&type=device
@@ -36,14 +42,25 @@ Route::get('/', function () {
 //AWSALB=K9M15+zKPi1WvXKcOJrnK7UiNG5MEYcVz3tDt4SdnSiugPsdIko7XDVnUaVuhhQUsX85W+0dJXnApcWWNS6pReZpQKvH69jcHGmeX2+kPXEh3Vj0WzaVcxDa23KZ;
 //AWSALBCORS=K9M15+zKPi1WvXKcOJrnK7UiNG5MEYcVz3tDt4SdnSiugPsdIko7XDVnUaVuhhQUsX85W+0dJXnApcWWNS6pReZpQKvH69jcHGmeX2+kPXEh3Vj0WzaVcxDa23KZ;
 //CONNECTSID=s%3AlKJg5QNG5Y6Tzdd-lblGMybkTcgwtR0S.vjcANQEvCNAWYcbNKPMo4J6zhhFsL20gY6%2BSuIbGSJQ;
-
+//https://dcc.ext.hp.com/list/device?displayLength=5&length=5&sequence=6&start=20&type=device ->Lista de equipos con paginación
+//https://dcc.ext.hp.com/list/customer?displayLength=5&length=5&sequence=1&start=0 -> URL de inicio
 Route::get('/dcc', function (){
     $data = Http::withCookies([
             "connect.sid"=>env('SID')
         ],"dcc.ext.hp.com")
-        ->get(env('URL_CUSTOMER_CURRENT'))
+        ->get('https://dcc.ext.hp.com/aggregate?countThreshold=600&property=family&type=device')
         ->json();
     //$status = $data['loggedIn'] ? 'Activa' : 'Expiro';
     //return "Estado de la sesion es: {$status}";
-    return $data;
+    return $data['docs'];
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 });
