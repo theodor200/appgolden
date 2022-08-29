@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\ShowModels;
 use App\Http\Livewire\ShowDevices;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
@@ -16,14 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('dashboard');
+    //return view('welcome');
 });
 
-Route::get('/devices', ShowDevices::class );
-
-Route::get('/sites', [\App\Http\Controllers\SitesController::class, 'index'])
-    ->middleware('auth')
-    ->name('index');
 // Customer ID 59f347a25da9bfa341c46130 (DHL)
 //
 // https://dcc.ext.hp.com/list/device?detail=1&displayLength=5&length=5&search=MXBCM9R1ZM&sequence=4&start=0&type=device
@@ -44,15 +41,24 @@ Route::get('/sites', [\App\Http\Controllers\SitesController::class, 'index'])
 //CONNECTSID=s%3AlKJg5QNG5Y6Tzdd-lblGMybkTcgwtR0S.vjcANQEvCNAWYcbNKPMo4J6zhhFsL20gY6%2BSuIbGSJQ;
 //https://dcc.ext.hp.com/list/device?displayLength=5&length=5&sequence=6&start=20&type=device ->Lista de equipos con paginación
 //https://dcc.ext.hp.com/list/customer?displayLength=5&length=5&sequence=1&start=0 -> URL de inicio
+//https://dcc.ext.hp.com/list/device/preSearch?search=MXBCM9W09K&sequence=1 --> URL de busqueda por serie o letras de serie
+//https://dcc.ext.hp.com/ui/service-orders/list?customerId=5f34730888f6e10012fcbd0d&itemId=2c92808273b8db1a0173eff2e40000c2&kits=false --> URL para ver las ordenes de servicio
 Route::get('/dcc', function (){
+    $case_osa = [];
     $data = Http::withCookies([
-            "connect.sid"=>env('SID')
-        ],"dcc.ext.hp.com")
-        ->get('https://dcc.ext.hp.com/aggregate?countThreshold=600&property=family&type=device')
+        "connect.sid"=>env('SID')],
+        "dcc.ext.hp.com")
+        ->get('https://dcc.ext.hp.com/ui/service-orders/list?customerId=5f34730888f6e10012fcbd0d&itemId=2c92808273b8db1a0173eff3542800d2&kits=false')
         ->json();
+    if(isset($data['rows'])){
+
+        //return dd($case_osa);
+        //$case_osa->put('total_count', $case_osa->count());
+    }
+
     //$status = $data['loggedIn'] ? 'Activa' : 'Expiro';
     //return "Estado de la sesion es: {$status}";
-    return $data['docs'];
+    return $data;
 });
 
 Route::middleware([
@@ -63,4 +69,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::get('/devices/{data}', ShowDevices::class )->name('devices');
+    Route::get('/models', ShowModels::class )->name('models');
+    Route::get('/sites', [\App\Http\Controllers\SitesController::class, 'index'])->name('sites.index');
 });

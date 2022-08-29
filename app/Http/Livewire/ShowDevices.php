@@ -1,35 +1,24 @@
 <?php
 
 namespace App\Http\Livewire;
-
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 
 class ShowDevices extends Component
 {
-    public $total_devices;
     public $name_client;
-    public $models_devices;
+    public $devices;
 
-    public function mount(){
-        $this->total_devices = $this->getTotalDevices();
+    public function mount( Request $request){
         $this->name_client = $this->getNameClient();
-        $this->models_devices = $this->getCountModelDevice();
+        $this->devices = $this->getDevicesWithModel($request->data);
     }
 
     public function render()
     {
         return view('livewire.show-devices')
             ->layout('layouts.app');
-    }
-
-    public function getTotalDevices(){
-        $data = Http::withCookies([
-            "connect.sid"=>env('SID')
-        ],"dcc.ext.hp.com")
-            ->get('https://dcc.ext.hp.com/list/device?displayLength=5&length=5&sequence=6&start=20&type=device')
-            ->json();
-        return $data['totalCount'];
     }
 
     public function getNameClient(){
@@ -41,12 +30,12 @@ class ShowDevices extends Component
         return $data['rows'][0]['name'];
     }
 
-    public function getCountModelDevice(){
+    public function getDevicesWithModel($request){
         $data = Http::withCookies([
             "connect.sid"=>env('SID')
         ],"dcc.ext.hp.com")
-            ->get('https://dcc.ext.hp.com/aggregate?countThreshold=600&property=family&type=device')
+            ->get('https://dcc.ext.hp.com/list/device?search='.$request.'&start=0&type=device')
             ->json();
-        return $data['docs'];
+        return $data;
     }
 }

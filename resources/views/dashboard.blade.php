@@ -13,5 +13,4 @@
             </div>
         </div>
     </div>
-    <livewire:show-devices />
 </x-app-layout>
