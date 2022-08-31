@@ -59,9 +59,7 @@
                                                 <div class="text-sm text-gray-500">Part number: {{$device['dataMap']['productNr']}}</div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap">
-
                                                 <livewire:status-services-osa :itemId="$device['dataMap']['id']" :customer-id="$device['customerId']" :wire:key="$device['dataMap']['id']"></livewire:status-services-osa>
-
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"></td>
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

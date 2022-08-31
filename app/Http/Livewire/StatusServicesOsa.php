@@ -15,7 +15,6 @@ class StatusServicesOsa extends Component
     public function mount($customerId, $itemId){
         $this->customerId=$customerId;
         $this->itemId=$itemId;
-        //$this->servicesOsa=$this->getServices($this->customerId,$this->itemId);
     }
 
     public function loadServices()
@@ -29,7 +28,6 @@ class StatusServicesOsa extends Component
             ? collect($this->getServices($this->customerId, $this->itemId))
             : [];
         return view('livewire.status-services-osa', compact('cases'));
-        //return view('livewire.status-services-osa',compact('case_osa'));
     }
 
     public function test($customerId, $itemId){
