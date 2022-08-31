@@ -17,7 +17,7 @@ class JobsController extends Controller
             ->get(env('URL_STATUS'))
             ->json();
         $status = $data['loggedIn'] ? "Activa" : "Expiro";
-        Log::info("Estado de la sesion es: {$status} con el ID {$id} y vence el {$id_end_time});
+        Log::info("Estado de la sesion es: {$status} con el ID {$id} y vence el {$id_end_time}");
         return redirect('/');
     }
 }
