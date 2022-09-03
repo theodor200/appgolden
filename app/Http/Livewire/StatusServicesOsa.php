@@ -44,11 +44,13 @@ class StatusServicesOsa extends Component
             ->get('https://dcc.ext.hp.com/ui/service-orders/list?customerId='.$customerId.'&itemId='.$itemId.'&kits=false');
 
         if($data->successful()){
-            if(isset($data['rows'])){
-                $case_osa=collect($data);
-                $case_osa->put('count',count($data['rows']));
+            $item = $data->json();
+            dd($item);
+            if(isset($item['rows'])){
+                $case_osa=collect($item);
+                $case_osa->put('count',count($item['rows']));
 
-                $rows = collect($data['rows']);
+                $rows = collect($item['rows']);
                 $case_osa->put('open', $rows->where('open', true)->count());
                 $case_osa->put('close', $rows->where('open', false)->count());
             }
