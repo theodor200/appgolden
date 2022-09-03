@@ -25,19 +25,40 @@
                                         <span class="inline-flex items-center text-sm py-2 text-gray-800">Esta clave se optiene del inicio de sesion en DCC y servira para obtener el ID del cliente y el nombre, estos datos se obtienen desde el DCC con el SID</span>
                                     </label>
 
-                                    <div class="flex gap-4 mt-1 sm:mt-0 sm:col-span-2">
-                                        <input wire:model="sid" type="text" name="sid" id="sid" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
-                                        <button wire:click="obtenerDatos" type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Obtener datos</button>
+                                    <div class="flex-row gap-4 mt-1 sm:mt-0 sm:col-span-2">
+                                        <div class="flex gap-4">
+                                            <input wire:model="sid" type="text" name="sid" id="sid" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                            <button wire:click="obtenerDatos" type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Obtener datos</button>
+                                        </div>
+
+                                        @error('sid')
+                                        <div class="flex items-center gap-2 py-4">
+                                                <span>
+                                                    <svg class="h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                                    </svg>
+                                                </span>
+                                            <p class="text-sm text-red-600">{{ $message }}</p>
+                                        </div>
+                                        @enderror
                                     </div>
-                                    @error('sid') <span class="error">{{ $message }}</span> @enderror
                                 </div>
 
                                 <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                                     <label for="first-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Cliente ID </label>
                                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                                         <input type="text" name="customer_id" id="customer_id" autocomplete="given-name" disabled value="{{$customer_id}}"  class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none">
+                                        @error('customer_id')
+                                        <div class="flex items-center gap-2 py-4">
+                                                <span>
+                                                    <svg class="h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                                    </svg>
+                                                </span>
+                                            <p class="text-sm text-red-600">{{ $message }}</p>
+                                        </div>
+                                        @enderror
                                     </div>
-                                    @error('customer_id') <span class="error">{{ $message }}</span> @enderror
                                 </div>
 
                                 <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
