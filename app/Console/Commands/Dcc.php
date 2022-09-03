@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Site;
 use Illuminate\Console\Command;
 
 class Dcc extends Command
@@ -27,8 +28,11 @@ class Dcc extends Command
      */
     public function handle()
     {
+        $sites = Site::all();
         $action= new \App\Http\Controllers\JobsController;
-        $action->dccStatus();
+        foreach ($sites as $site) {
+            $action->dccStatus($site);
+        }
         //return 0;
     }
 }
