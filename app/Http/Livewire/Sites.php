@@ -14,6 +14,7 @@ class Sites extends Component
     public $name;
     public $email;
     public $page;
+    public $site_show;
 
     protected $rules = [
         'name' => 'required|unique:sites',
@@ -23,7 +24,23 @@ class Sites extends Component
     ];
 
     public function mount(){
-        $this->sites = Site::all();
+        $this->showSites();
+    }
+
+    protected function showSites(){
+        $items = Site::all();
+        $collect = collect([]);
+
+        foreach ($items as $item){
+            $data = Http::withCookies(
+                ["connect.sid"=>$item->sid],
+                "dcc.ext.hp.com"
+            )
+                ->get('https://dcc.ext.hp.com/list/customer?displayLength=5&length=5&sequence=1&start=0')
+                ->json();
+            $collect->push($data);
+        }
+        $this->sites = $collect;
     }
 
     public function obtenerDatos(){
@@ -49,20 +66,16 @@ class Sites extends Component
         Site::create($validatedData);
     }
 
-    public function resetForm(){
-        $this->sid='';
-        $this->customer_id='';
-        $this->name='';
-        $this->email='';
-    }
-
     public function render()
     {
-        $view = view('livewire.sites');
-        if($this->page=="show_page"){
-            $view = view('livewire.sites-show');
+        $view = view('livewire.sites-mostrar');
+        if($this->page=="guardar"){
+            $this->sid='';
+            $this->customer_id='';
+            $this->name='';
+            $this->email='';
+            $view = view('livewire.sites-guardar');
         }
-
         return $view;
     }
 }
