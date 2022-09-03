@@ -5,7 +5,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="md:flex md:items-center md:justify-between p-8 bg-gray-800">
                         <div class="flex-1 min-w-0">
-                            <h2 class="text-2xl font-bold leading-7 text-white sm:text-3xl sm:truncate">{{$name_client}}</h2>
+                            <h2 class="text-2xl font-bold leading-7 text-white sm:text-3xl sm:truncate">SITE {{$name_client}}</h2>
                             <div class="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
                                 <div class="mt-4 flex items-center text-sm text-gray-300">
                                     <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
