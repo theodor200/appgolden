@@ -36,6 +36,10 @@ Route::get('/dcc', function (){
     return $data;
 });
 
+Route::get('/', function () {
+    return view('dashboard');
+})->name('dashboard');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
