@@ -44,20 +44,11 @@ Route::get('/', function () {
 //https://dcc.ext.hp.com/list/device/preSearch?search=MXBCM9W09K&sequence=1 --> URL de busqueda por serie o letras de serie
 //https://dcc.ext.hp.com/ui/service-orders/list?customerId=5f34730888f6e10012fcbd0d&itemId=2c92808273b8db1a0173eff2e40000c2&kits=false --> URL para ver las ordenes de servicio
 Route::get('/dcc', function (){
-    $case_osa = [];
     $data = Http::withCookies([
         "connect.sid"=>env('SID')],
         "dcc.ext.hp.com")
-        ->get('https://dcc.ext.hp.com/ui/service-orders/list?customerId=5f34730888f6e10012fcbd0d&itemId=2c92808273b8db1a0173eff3542800d2&kits=false')
+        ->get('https://dcc.ext.hp.com/list/customer?displayLength=5&length=5&sequence=1&start=0')
         ->json();
-    if(isset($data['rows'])){
-
-        //return dd($case_osa);
-        //$case_osa->put('total_count', $case_osa->count());
-    }
-
-    //$status = $data['loggedIn'] ? 'Activa' : 'Expiro';
-    //return "Estado de la sesion es: {$status}";
     return $data;
 });
 
@@ -71,5 +62,5 @@ Route::middleware([
     })->name('dashboard');
     Route::get('/devices/{data}', ShowDevices::class )->name('devices');
     Route::get('/models', ShowModels::class )->name('models');
-    Route::get('/sites', [\App\Http\Controllers\SitesController::class, 'index'])->name('sites.index');
+    Route::get('/sites', \App\Http\Livewire\Sites::class)->name('sites');
 });
