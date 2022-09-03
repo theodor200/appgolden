@@ -13,6 +13,7 @@ class Sites extends Component
     public $customer_id;
     public $name;
     public $email;
+    public $page;
 
     protected $rules = [
         'name' => 'required|unique:sites',
@@ -48,8 +49,20 @@ class Sites extends Component
         Site::create($validatedData);
     }
 
+    public function resetForm(){
+        $this->sid='';
+        $this->customer_id='';
+        $this->name='';
+        $this->email='';
+    }
+
     public function render()
     {
-        return view('livewire.sites');
+        $view = view('livewire.sites');
+        if($this->page=="show_page"){
+            $view = view('livewire.sites-show');
+        }
+
+        return $view;
     }
 }
