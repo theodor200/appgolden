@@ -47,7 +47,7 @@ Route::get('/dcc', function (){
     $data = Http::withCookies([
         "connect.sid"=>env('SID')],
         "dcc.ext.hp.com")
-        ->get('https://dcc.ext.hp.com/list/customer?displayLength=5&length=5&sequence=1&start=0')
+        ->get('https://dcc.ext.hp.com/ui/login/status')
         ->json();
     return $data;
 });

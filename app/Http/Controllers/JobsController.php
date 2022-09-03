@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Site;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
@@ -9,15 +10,17 @@ use Illuminate\Support\Facades\Http;
 class JobsController extends Controller
 {
     public function dccStatus(){
-        $id=env('SID');
-        $id_end_time=env('SID_EXPIRA');
-        $data = Http::withCookies([
-            "connect.sid"=>$id
-        ],"dcc.ext.hp.com")
-            ->get(env('URL_STATUS'))
-            ->json();
-        $status = $data['loggedIn'] ? "Activa" : "Expiro";
-        Log::info("Estado de la sesion es: {$status} con el ID {$id} y vence el {$id_end_time}");
-        return redirect('/');
+        $sites = Site::all();
+        foreach ($sites as $site){
+            $data = Http::withCookies([
+                "connect.sid" => $site->sid
+            ],"dcc.ext.hp.com")
+                ->get('https://dcc.ext.hp.com/ui/login/status')
+                ->json();
+            if(isset($data['loggedIn']) && $data['loggedIn']==true){
+                return Log::info('ACTIVO: '.$site->name .' SID: '.$site->sid);
+            }
+            Log::info('INACTIVO: '.$site->name .' SID: '.$site->sid);
+        }
     }
 }
