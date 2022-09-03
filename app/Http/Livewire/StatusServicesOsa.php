@@ -50,8 +50,8 @@ class StatusServicesOsa extends Component
                 $case_osa->put('count',count($item['rows']));
 
                 $rows = collect($item['rows']);
-                //$case_osa->put('open', $rows->where('open', true)->count());
-                $case_osa->put('open', 100);
+                dd($rows);
+                $case_osa->put('open', $rows->where('open', true)->count());
                 $case_osa->put('close', $rows->where('open', false)->count());
             }
         }elseif ($data->failed()){
