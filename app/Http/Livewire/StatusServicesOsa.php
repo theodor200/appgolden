@@ -45,13 +45,13 @@ class StatusServicesOsa extends Component
 
         if($data->successful()){
             $item = $data->json();
-            dd($item);
             if(isset($item['rows'])){
                 $case_osa=collect($item);
                 $case_osa->put('count',count($item['rows']));
 
                 $rows = collect($item['rows']);
-                $case_osa->put('open', $rows->where('open', true)->count());
+                //$case_osa->put('open', $rows->where('open', true)->count());
+                $case_osa->put('open', 100);
                 $case_osa->put('close', $rows->where('open', false)->count());
             }
         }elseif ($data->failed()){
