@@ -44,7 +44,7 @@
                                 <p class="text-2xl font-semibold text-gray-900">{{$total_devices}}</p>
                                 <div class="absolute bottom-0 inset-x-0 bg-gray-50 px-4 py-4 sm:px-6">
                                     <div class="text-sm">
-                                        <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500"> View all</a>
+                                        <a href="{{ route('devices', ['model'=>'all', 'customer'=>$this->getId()]) }}" class="font-medium text-indigo-600 hover:text-indigo-500"> View all</a>
                                     </div>
                                 </div>
                             </dd>
@@ -64,7 +64,7 @@
                                     <p class="text-2xl font-semibold text-gray-900">{{$model['count']}}</p>
                                     <div class="absolute bottom-0 inset-x-0 bg-gray-50 px-4 py-4 sm:px-6">
                                         <div class="text-sm">
-                                            <a href="{{ route('devices', ['model'=>$model['value'], 'customer'=>$this->getId()]) }}" class="font-medium text-indigo-600 hover:text-indigo-500">
+                                            <a href="{{ route('devices', ['model'=>$model['value'] == '' ? 'all' : $model['value'], 'customer'=>$this->getId()]) }}" class="font-medium text-indigo-600 hover:text-indigo-500">
                                                 View all devices
                                             </a>
                                         </div>

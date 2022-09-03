@@ -16,8 +16,11 @@ class ShowDevices extends Component
     public function mount( Request $request){
         $sid = Site::where('customer_id',$request->customer)->first();
         $this->name_client = $this->getNameClient($sid['sid']);
-        $this->devices = $this->getDevicesWithModel($request->model, $sid['sid']);
-
+        if($request->model=='all'){
+            $this->devices = $this->getAllDevices($sid['sid']);
+        }else{
+            $this->devices = $this->getDevicesWithModel($request->model, $sid['sid']);
+        }
     }
 
     public function render()
@@ -41,6 +44,16 @@ class ShowDevices extends Component
         ],"dcc.ext.hp.com")
             ->get('https://dcc.ext.hp.com/list/device?search='.$model.'&start=0&type=device')
             ->json();
+        return $data;
+    }
+
+    public function getAllDevices($sid){
+        $data = Http::withCookies([
+            "connect.sid"=>$sid
+        ],"dcc.ext.hp.com")
+            ->get('https://dcc.ext.hp.com/list/device?displayLength=999999&length=999999&start=0&type=device')
+            ->json();
+        $data['all'] = true;
         return $data;
     }
 }

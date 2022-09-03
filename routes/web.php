@@ -38,7 +38,7 @@ Route::get('/dcc', function (){
     $data = Http::withCookies([
         "connect.sid"=>'s%3A2iYRJaTrUSGD56zVg9auwRBrkHR3_L5t.Vlf%2FUsz%2Fqq%2BkcmqJBqWR6KSftOg96%2BZ2wnadvihr6Cc'],
         "dcc.ext.hp.com")
-        ->get('https://dcc.ext.hp.com/list/customer?displayLength=5&length=5&sequence=1&start=0')
+        ->get('https://dcc.ext.hp.com/list/device?displayLength=999999&length=999999&start=0&type=device')
         ->json();
     return $data;
 });
