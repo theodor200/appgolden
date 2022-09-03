@@ -16,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    return redirect('dashboard');
+    //return view('welcome');
+});
+
+// Customer ID 59f347a25da9bfa341c46130 (DHL)
+//
 // https://dcc.ext.hp.com/list/device?detail=1&displayLength=5&length=5&search=MXBCM9R1ZM&sequence=4&start=0&type=device
 // https://dcc.ext.hp.com/ui/service-orders/list?customerId=5f34730888f6e10012fcbd0d&itemId=2c92808273b8db1a0173eff2a2c000b8&kits=false //DIVEMOTOR
 // https://dcc.ext.hp.com/ui/service-orders/list?customerId=59f347a25da9bfa341c46130&itemId=2c92808579eecc0a0179f23d423900c4&kits=false //DHL
@@ -35,11 +42,6 @@ Route::get('/dcc', function (){
         ->json();
     return $data;
 });
-
-Route::get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
