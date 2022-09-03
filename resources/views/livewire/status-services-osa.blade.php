@@ -39,9 +39,9 @@
             <span class="px-2 inline-flex text-sm leading-5 font-medium rounded-full bg-indigo-500 text-white">Cargando casos</span>
         </p>
     </div>
-   <!--
+
     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"> Customer ID: {{$customerId}} </span>
     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"> Item ID: {{$itemId}} </span>
-    -->
+
 
 </div>
