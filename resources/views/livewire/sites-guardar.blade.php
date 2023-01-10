@@ -28,7 +28,7 @@
 
                                     <div class="flex-row gap-4 mt-1 sm:mt-0 sm:col-span-2">
                                         <div class="flex gap-4">
-                                            <input wire:model="sid" type="text" name="sid" id="sid" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                            <input wire:model="sid" type="text" name="sid" id="sid" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"/>
                                             <button wire:click="obtenerDatos" type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Obtener datos</button>
                                         </div>
                                         @error('sid')
