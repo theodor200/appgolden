@@ -5,6 +5,7 @@ use App\Http\Livewire\ShowModels;
 use App\Http\Livewire\ShowDevices;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
+use App\Mail\TestSmtp;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,4 +84,7 @@ Route::middleware([
     Route::get('/sites', \App\Http\Livewire\Sites::class)->name('sites');
     Route::get('/models/{customer}', ShowModels::class )->name('models');
     Route::get('/devices/{model}/{customer}', ShowDevices::class )->name('devices');
+    Route::get('/smtptest', function (){
+        \Illuminate\Support\Facades\Mail::to('theodorcardenas@gmail.com')->send(new TestSmtp());
+    });
 });
