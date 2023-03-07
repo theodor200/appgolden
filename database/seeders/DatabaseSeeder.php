@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             SiteSeeder::class,
-            UserSeed::class
+            UserSeed::class,
+            CookieClienteSeeder::class
         ]);
         // \App\Models\User::factory(10)->create();
 
