@@ -30,5 +30,4 @@ class ControllerIngram extends Controller
         return view('Imports.show', compact('items'));
     }
 
-
 }

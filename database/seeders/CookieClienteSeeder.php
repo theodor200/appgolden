@@ -24,43 +24,43 @@ class CookieClienteSeeder extends Seeder
 
         DB::table('cookies')->insert(
             [
-                'cliente'=>'DIVEIMPORT',
-                'DIVECENTER'=>'mg2kvatrnttxhizxg2u12xnm'
+                'cliente'=>'DIVECENTER',
+                'cookie'=>'mg2kvatrnttxhizxg2u12xnm'
             ]
         );
 
         DB::table('cookies')->insert(
             [
                 'cliente'=>'ENTEL',
-                'DIVECENTER'=>'r2fle0fsk0fptgqwejzbftp2'
+                'cookie'=>'r2fle0fsk0fptgqwejzbftp2'
             ]
         );
 
         DB::table('cookies')->insert(
             [
                 'cliente'=>'DHL SUPPLY CHAIN',
-                'DIVECENTER'=>'3osxz31gjfrc5khfp2n3p01f'
+                'cookie'=>'3osxz31gjfrc5khfp2n3p01f'
             ]
         );
 
         DB::table('cookies')->insert(
             [
                 'cliente'=>'GLENCORE',
-                'DIVECENTER'=>'v1bsj5atx5xxkv5rr03tr34u'
+                'cookie'=>'v1bsj5atx5xxkv5rr03tr34u'
             ]
         );
 
         DB::table('cookies')->insert(
             [
                 'cliente'=>'ANGLOAMERICAN',
-                'DIVECENTER'=>'4krrjst2uabatyivhoo0uo1i'
+                'cookie'=>'4krrjst2uabatyivhoo0uo1i'
             ]
         );
 
         DB::table('cookies')->insert(
             [
                 'cliente'=>'BUENAVENTURA',
-                'DIVECENTER'=>'t5s5i0j1rvszhjktaxye5x0f'
+                'cookie'=>'t5s5i0j1rvszhjktaxye5x0f'
             ]
         );
     }

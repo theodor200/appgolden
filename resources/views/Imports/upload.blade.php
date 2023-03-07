@@ -79,6 +79,20 @@
                                 </div>
                             @endif
                             <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                                <div>
+                                    <label for="location" class="block text-sm font-medium text-gray-700">Location</label>
+                                    <select id="location" name="location" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" required>
+                                        <option value="">Seleccione un cliente</option>
+                                        @php
+                                            $cookies = new App\Models\CookieCliente();
+
+                                        @endphp
+
+                                        @foreach($cookies::all() as $cookie)
+                                            <option value="{{ $cookie->id }}">{{ $cookie->cliente }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="sm:col-span-6">
                                     <label for="cover-photo" class="block text-sm font-medium text-gray-700"> Subir archivo </label>
                                     <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
@@ -86,7 +100,7 @@
                                             <div class="flex text-sm text-gray-600">
                                                 <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                                                     <span>Elegir archivo</span>
-                                                    <input id="file-upload" name="file-upload" type="file">
+                                                    <input id="file-upload" name="file-upload" type="file" required>
                                                 </label>
 
                                             </div>

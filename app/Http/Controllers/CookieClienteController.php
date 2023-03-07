@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CookieCliente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -23,4 +24,5 @@ class CookieClienteController extends Controller
 
         Log::info($log);
     }
+
 }
