@@ -23,7 +23,7 @@ class PedidosIngramImport implements ToModel, WithHeadingRow
         //Modelo pedido_ingram ACTUALIZA un registro si encuentra una nota de venta registrada previamente, si no lo encuentra, creea un nuevo registro
 
         return PedidosIngram::updateOrCreate(
-                ['nota_venta' => $row['order_dcc']],
+                ['order_dcc' => $row['order_dcc']],
                 [
                     'cliente' => $row['cliente'],
                     'nota_venta' => $row['nota_venta'],
