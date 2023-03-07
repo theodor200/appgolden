@@ -24,6 +24,7 @@
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                                 <p>Del informe descargado en el archivo de Excel, deberás conservar y renombrar solo las siguientes columnas :</p><br>
                                 <ul class="space-y-2 list-disc pl-6">
+                                    <li>Crear la primera columna con el título <b>cliente</b></li>
                                     <li>TRACKING_NO renombrar a <b>nota_venta</b></li>
                                     <li>DEV_SERIAL_NO renombrar a <b>serie</b></li>
                                     <li>DEV_MODEL_NO renombrar a <b>numero_modelo</b></li>
@@ -35,9 +36,10 @@
                                     <li>ORD_PART_DESC renombrar a <b>suministro</b></li>
                                     <li>NAME1 renombrar a <b>cliente_dcc</b></li>
                                     <li>NAME2 renombrar a <b>site_dcc</b></li>
+                                    <li><b>Borrar el resto de columnas y conservar las que se indican lineas arriba</b></li>
                                 </ul>
                                 <br>
-                                <span>Importante: Las columnas con datos vacios, dejarlos así. El titulo de cada columna debe ser en minusculas</span>
+                                <span><b>Importante:</b> Las columnas con datos vacios, dejarlos así. El titulo de cada columna debe ser en minusculas</span>
                             </dd>
                         </div>
                         <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
