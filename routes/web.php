@@ -6,6 +6,8 @@ use App\Http\Livewire\ShowDevices;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use App\Mail\TestSmtp;
+use Goutte\Client;
+use Symfony\Component\DomCrawler\Crawler;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,4 +89,7 @@ Route::middleware([
     Route::get('/smtptest', function (){
         \Illuminate\Support\Facades\Mail::to('theodorcardenas@gmail.com')->send(new TestSmtp());
     });
+    Route::get('/pedido', [\App\Http\Controllers\ControllerIngram::class,'index'])->name('pedidos');
+    Route::post('/upload_excel', [\App\Http\Controllers\ControllerIngram::class,'upload'])->name('upload.excel');
+    Route::get('/ver_pedidos', [\App\Http\Controllers\ControllerIngram::class,'show'])->name('show.pedidos');
 });
