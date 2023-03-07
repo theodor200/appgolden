@@ -1,8 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Ver pedidos') }}
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight pb-4">
+            Pedidos:
         </h2>
+        <p>Cantidad de pedidos procesados: {{$items->count()}}</p>
     </x-slot>
     <div class="py-12">
         <div class="max-w-8xl mx-auto sm:px-6 lg:px-8 h-96">
