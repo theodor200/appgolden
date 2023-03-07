@@ -3,24 +3,23 @@
 namespace App\Console\Commands;
 
 use App\Models\CookieCliente;
-use App\Models\Site;
 use Illuminate\Console\Command;
 
-class Dcc extends Command
+class IngramStatus extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'dcc:status';
+    protected $signature = 'ingram:status';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Permite ver si la sesion sigue activa en DCC';
+    protected $description = 'Permite ver si la sesion sigue activa en Ingram';
 
     /**
      * Execute the console command.
@@ -29,11 +28,11 @@ class Dcc extends Command
      */
     public function handle()
     {
-        $sites = Site::all();
-        $action= new \App\Http\Controllers\JobsController;
-        foreach ($sites as $site) {
-            $action->dccStatus($site);
+        $clientes = CookieCliente::all();
+        $action= new \App\Http\Controllers\CookieClienteController;
+        foreach ($clientes as $cliente) {
+            $action->cookieIngramStatus($cliente);
         }
-        //return 0;
+        //return Command::SUCCESS;
     }
 }

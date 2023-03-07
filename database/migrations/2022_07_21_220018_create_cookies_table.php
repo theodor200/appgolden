@@ -15,10 +15,8 @@ return new class extends Migration
     {
         Schema::create('cookies', function (Blueprint $table) {
             $table->id();
-            $table->string('cuenta');
-            $table->string('awsalb',250);
-            $table->string('awsalbcors',250);
-            $table->string('connectsid',250);
+            $table->string('cliente');
+            $table->string('cookie');
             $table->timestamps();
         });
     }

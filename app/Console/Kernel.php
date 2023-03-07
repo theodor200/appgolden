@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('dcc:status')->everyMinute();
+        $schedule->command('ingram:status')->everyMinute();
     }
 
     /**

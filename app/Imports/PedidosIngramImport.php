@@ -59,7 +59,7 @@ class PedidosIngramImport implements ToModel, WithHeadingRow
         }
         //Obtemos los datos de la web de Ingram segun la nota venta
         $datos_nota_venta = Http::withCookies([
-            "ASP.NET_SessionId"=>'eokiihkcll5vnt4fpry4hnm5'],
+            "ASP.NET_SessionId"=>'zyyaffjxctv20w1w24ourc0f'],
             "www.ingrammicromps.com")
             ->get('https://www.ingrammicromps.com/hpmps/consulta_estado2.aspx?ndoc='.$nota_venta.'&tdoc=05')
             ->body();

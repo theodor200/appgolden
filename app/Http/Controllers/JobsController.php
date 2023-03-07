@@ -16,9 +16,11 @@ class JobsController extends Controller
             ->get('https://dcc.ext.hp.com/ui/login/status')
             ->json();
         if (isset($data['loggedIn']) && $data['loggedIn'] == true) {
-            $log = 'ACTIVO: ' . $site->name . ' SID: ' . $site->sid;
+            $log = 'ACTIVO: '.$site->name.' SID: '.$site->sid;
+        }else{
+            $log = 'INACTIVO: '.$site->name.' SID: '.$site->sid;
         }
-        $log = 'INACTIVO: ' . $site->name . ' SID: ' . $site->sid;
+
         Log::info($log);
     }
 }
