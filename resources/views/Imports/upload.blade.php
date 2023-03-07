@@ -82,7 +82,7 @@
                             @endif
                             <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                                 <div class="sm:col-span-6">
-                                    <label for="location" class="block text-sm font-medium text-gray-700">Cliente:</label>
+                                    <label for="location" class="block text-sm font-medium text-gray-700"><b>Cliente:</b> <br>Importante, tu archivo de Excel no debe contener pedidos ajenos al cliente seleccionado, caso contrario el sistema dara un error.</label>
                                     <select id="location" name="cliente" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" required>
                                         <option value="">Seleccione un cliente</option>
 
