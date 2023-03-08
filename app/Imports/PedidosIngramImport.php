@@ -29,8 +29,12 @@ class PedidosIngramImport implements ToModel, WithHeadingRow
 
         //Modelo pedido_ingram ACTUALIZA un registro si encuentra una nota de venta registrada previamente, si no lo encuentra, creera un nuevo registro
 
-        return PedidosIngram::updateOrCreate(
-                ['order_dcc' => $row['order_dcc']],
+        /*return PedidosIngram::updateOrCreate(
+                [
+                    'order_dcc' => $row['order_dcc'],
+                    'numero_suministro'=> $row['numero_suministro'],
+                    'nota_venta'=>$row['nota_venta']
+                ],
                 [
                     'cliente' => $row['cliente'],
                     'nota_venta' => $row['nota_venta'],
@@ -57,6 +61,34 @@ class PedidosIngramImport implements ToModel, WithHeadingRow
                     'observaciones'=> $datos['observaciones']
                 ]
             );
+        */
+
+        return PedidosIngram::create(
+            [
+                'cliente' => $row['cliente'],
+                'nota_venta' => $row['nota_venta'],
+                'serie' => $row['serie'],
+                'numero_modelo' => $row['numero_modelo'],
+                'modelo' => $row['modelo'],
+                'order_dcc' => $row['order_dcc'],
+                'order_estado_dcc' => $row['order_estado_dcc'],
+                'order_tipo_dcc' => $row['order_tipo_dcc'],
+                'numero_suministro' => $row['numero_suministro'],
+                'suministro' => $row['suministro'],
+                'cliente_dcc' => $row['cliente_dcc'],
+                'site_dcc' => $row['site_dcc'],
+                //'nota_venta'=> $datos['nota_venta'], //Esta fila muestra la nota de venta de la web de Ingram al hacer el Scrap
+                'guia_remision'=> $datos['guia_remision'],
+                'procesado'=> $datos['procesado'],
+                'preparado'=> $datos['preparado'],
+                'transito'=> $datos['transito'],
+                'zona'=> $datos['zona'],
+                'entregado'=> $datos['entregado'],
+                'digitalizado'=> $datos['digitalizado'],
+                'rechazado'=> $datos['rechazado'],
+                'observaciones'=> $datos['observaciones']
+            ]
+        );
         //Fin de modelo ingram
     }
 

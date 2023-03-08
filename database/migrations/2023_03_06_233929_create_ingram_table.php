@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('serie')->nullable()->default(null);
             $table->string('numero_modelo')->nullable()->default(null);
             $table->string('modelo')->nullable()->default(null);
-            $table->string('order_dcc')->unique();
+            $table->string('order_dcc');
             $table->string('order_estado_dcc')->nullable()->default(null);
             $table->string('order_tipo_dcc')->nullable()->default(null);
             $table->string('numero_suministro')->nullable()->default(null);
