@@ -1,8 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Pedido suministros') }}
-        </h2>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">{{ __('Pedido suministros') }}</h2>
     </x-slot>
 
     <div class="py-12">
@@ -61,8 +59,7 @@
                 <form action="{{ route('upload.excel') }}" method="post" enctype="multipart/form-data" class="w-3/4 space-y-8 divide-y divide-gray-200">
                     @csrf
                     <div class="space-y-8 divide-y divide-gray-200">
-                        <div>
-                            @if(Session::has('message'))
+                        @if(Session::has('message'))
                                 <div class="rounded-md bg-green-50 p-4">
                                     <div class="flex">
                                         <div class="flex-shrink-0">
@@ -80,8 +77,8 @@
                                     </div>
                                 </div>
                             @endif
-                            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-                                <div class="sm:col-span-6">
+                        <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                                <div class="sm:col-span-6 space-y-4">
                                     <label for="location" class="block text-sm font-medium text-gray-700"><b>Cliente:</b> <br>Importante, tu archivo de Excel no debe contener pedidos ajenos al cliente seleccionado, caso contrario el sistema dara un error.</label>
                                     <select id="location" name="cliente" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" required>
                                         <option value="">Seleccione un cliente</option>
@@ -108,7 +105,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
 
                     <div class="pt-5">

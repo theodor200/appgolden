@@ -17,11 +17,14 @@ class ControllerIngram extends Controller
 
     public function upload(Request $request){
         $request->validate([
-            'file-upload' => 'required|mimes:xlsx'
+            'file-upload' => 'required|mimes:xlsx',
+            'cliente' => 'required'
         ]);
 
         $file = $request->file('file-upload');
-        Excel::import(new PedidosIngramImport(), $file);
+        $cliente = $request->input('cliente');
+
+        Excel::import(new PedidosIngramImport($cliente), $file);
         return back()->with('message', 'Importacion de pedidos completada');
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Imports;
 
+use App\Models\CookieCliente;
 use App\Models\PedidosIngram;
 use Illuminate\Support\Facades\Http;
 use Maatwebsite\Excel\Concerns\ToModel;
@@ -11,6 +12,12 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class PedidosIngramImport implements ToModel, WithHeadingRow
 {
+    protected $cliente;
+    public function __construct($cliente)
+    {
+        $this->cliente = $cliente;
+    }
+
     /**
     * @param array $row
     *
@@ -20,7 +27,7 @@ class PedidosIngramImport implements ToModel, WithHeadingRow
     {
         $datos = $this->pedido($row['cliente'],$row['serie'],$row['nota_venta']);
 
-        //Modelo pedido_ingram ACTUALIZA un registro si encuentra una nota de venta registrada previamente, si no lo encuentra, creea un nuevo registro
+        //Modelo pedido_ingram ACTUALIZA un registro si encuentra una nota de venta registrada previamente, si no lo encuentra, creera un nuevo registro
 
         return PedidosIngram::updateOrCreate(
                 ['order_dcc' => $row['order_dcc']],
@@ -57,9 +64,13 @@ class PedidosIngramImport implements ToModel, WithHeadingRow
         if($nota_venta == ''){
             $nota_venta = 0;
         }
+        //Obtenemos la cookie en base al cliente elejido
+
+        $cookie = CookieCliente::find($this->cliente);
+
         //Obtemos los datos de la web de Ingram segun la nota venta
         $datos_nota_venta = Http::withCookies([
-            "ASP.NET_SessionId"=>'zyyaffjxctv20w1w24ourc0f'],
+            "ASP.NET_SessionId"=>$cookie->cookie],
             "www.ingrammicromps.com")
             ->get('https://www.ingrammicromps.com/hpmps/consulta_estado2.aspx?ndoc='.$nota_venta.'&tdoc=05')
             ->body();
@@ -93,9 +104,6 @@ class PedidosIngramImport implements ToModel, WithHeadingRow
             $rechazado = $extraer->filter('table > tr')->eq(1)->children()->eq(7)->text();
             $observaciones = $extraer->filter('table > tr')->eq(1)->children()->eq(8)->text();
         }
-
-
-
 
         //Fin de extraer los datos de fechas de la web de ingram
 
