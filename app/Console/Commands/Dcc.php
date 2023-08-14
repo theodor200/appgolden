@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\CookieCliente;
 use App\Models\Site;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class Dcc extends Command
 {
@@ -29,11 +30,12 @@ class Dcc extends Command
      */
     public function handle()
     {
+        Log::info('Me ejecute');
         $sites = Site::all();
         $action= new \App\Http\Controllers\JobsController;
         foreach ($sites as $site) {
             $action->dccStatus($site);
         }
-        //return 0;
+        return 0;
     }
 }
