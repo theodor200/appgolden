@@ -15,6 +15,7 @@ class SiteSeeder extends Seeder
      */
     public function run()
     {
+        /*
         DB::table('sites')->insert(
             [
                 'name'=>'ENTEL PERU S.A.',
@@ -70,6 +71,6 @@ class SiteSeeder extends Seeder
                 'email'=>'operadorhp_bnv@htw.com.pe',
                 'sid'=>'s:GHcFP7DaSTlCzAhJdejHblHhClxm4QEE.4eURw3RVth8icnDCX01TTX+Mxd6/sYsM0An3Tt0dRSU'
             ]
-        );
+        );*/
     }
 }

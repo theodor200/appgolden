@@ -15,7 +15,7 @@ class CookieClienteSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('cookies')->insert(
+        /*DB::table('cookies')->insert(
             [
                 'cliente'=>'DIVEIMPORT',
                 'cookie'=>'kxaddoloktxt0hpp3qudybkc'
@@ -62,6 +62,6 @@ class CookieClienteSeeder extends Seeder
                 'cliente'=>'BUENAVENTURA',
                 'cookie'=>'t5s5i0j1rvszhjktaxye5x0f'
             ]
-        );
+        );*/
     }
 }
