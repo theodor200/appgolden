@@ -2,40 +2,36 @@
 
 namespace App\Console\Commands;
 
-use App\Models\CookieCliente;
-use App\Models\Site;
+use App\Models\Glpi;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 
-class Dcc extends Command
+class PingGlpi extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'dcc:status';
+    protected $signature = 'cookie:glpi';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Permite ver si la sesion sigue activa en DCC';
+    protected $description = 'Active remote session cookie Glpi';
 
     /**
      * Execute the console command.
-     *
-     * @return int
      */
     public function handle()
     {
-        Log::info('dcc:status, Comando ejecutado');
-        $sites = Site::all();
+        //
+        Log::info('cookie:glpi, Comando ejecutado');
+        $glpi = Glpi::all()->first();
         $action= new \App\Http\Controllers\JobsController;
-        foreach ($sites as $site) {
-            $action->dccStatus($site);
-        }
+        $action->glpiStatus($glpi);
         return 0;
     }
 }

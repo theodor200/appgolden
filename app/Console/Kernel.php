@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('dcc:status')->everyMinute();
         $schedule->command('ingram:status')->everyMinute();
+        $schedule->command('cookie:glpi')->everyMinute();
     }
 
     /**

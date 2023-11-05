@@ -109,7 +109,6 @@ class ShowDevices extends Component
             ->json();
         return $data['totalCount'];
     }
-
     protected function HTTP_client(array $options):Client{
         return new Client($options);
     }

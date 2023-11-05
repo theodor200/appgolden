@@ -9,6 +9,7 @@ use Livewire\Component;
 class StatusServicesOsa extends Component
 {
     public $customerId;
+    public $_id;
     public $itemId;
     public $servicesOsa;
     public $readyToLoad = false;

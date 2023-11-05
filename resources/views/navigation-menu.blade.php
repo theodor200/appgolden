@@ -15,10 +15,13 @@
                     <x-jet-nav-link href="{{ route('sites') }}" :active="request()->routeIs('sites')">
                         {{ __('Sites') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('pedidos') }}" :active="request()->routeIs('sites')">
+                    <x-jet-nav-link href="{{ route('site.building') }}" :active="request()->routeIs('site.building')">
+                        {{ __('Sites buildings') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('pedidos') }}" :active="request()->routeIs('pedidos')">
                         {{ __('Importar pedidos') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('show.pedidos') }}" :active="request()->routeIs('sites')">
+                    <x-jet-nav-link href="{{ route('show.pedidos') }}" :active="request()->routeIs('show.pedidos')">
                         {{ __('Ver pedidos') }}
                     </x-jet-nav-link>
                 </div>
@@ -143,9 +146,18 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('sites') }}" :active="request()->routeIs('sites')">
-                {{ __('sites') }}
-            </x-jet-responsive-nav-link>
+            <x-jet-nav-link href="{{ route('sites') }}" :active="request()->routeIs('sites')">
+                {{ __('Sites') }}
+            </x-jet-nav-link>
+            <x-jet-nav-link href="{{ route('site.building') }}" :active="request()->routeIs('site.building')">
+                {{ __('Sites buildings') }}
+            </x-jet-nav-link>
+            <x-jet-nav-link href="{{ route('pedidos') }}" :active="request()->routeIs('pedidos')">
+                {{ __('Importar pedidos') }}
+            </x-jet-nav-link>
+            <x-jet-nav-link href="{{ route('show.pedidos') }}" :active="request()->routeIs('show.pedidos')">
+                {{ __('Ver pedidos') }}
+            </x-jet-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
