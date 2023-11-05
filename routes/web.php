@@ -64,4 +64,7 @@ Route::middleware([
 
     Route::get('/suministros/{type}/{color}/{model}/{customer}', \App\Http\Livewire\ShowSuministros::class)->name('suministros');
 
+    //GLPI
+    Route::get('/tickets', [\App\Http\Controllers\ControllerGlpi::class, 'listTickets'])->name('list.tickets.glpi');
+
 });
