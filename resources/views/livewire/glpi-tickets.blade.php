@@ -47,12 +47,7 @@
                                         <th scope="col" class="px-6 py-3 text-left text-[12px] font-medium text-gray-500 uppercase tracking-wider">F. Ult Actualizacipon</th>
                                         <th scope="col" class="px-6 py-3 text-left text-[12px] font-medium text-gray-500 uppercase tracking-wider">Grupo Técnico</th>
                                         <th scope="col" class="px-6 py-3 text-left text-[12px] font-medium text-gray-500 uppercase tracking-wider">Técnico</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-[12px] font-medium text-gray-500 uppercase tracking-wider">Historico asignación</th>
-                                        <!--
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
-                                        <th scope="col" class="relative px-6 py-3">
-                                            <span class="sr-only">Edit</span>
-                                        </th>
+                                        <!--<th scope="col" class="px-6 py-3 text-left text-[12px] font-medium text-gray-500 uppercase tracking-wider">Historico asignación</th>
                                         -->
                                     </tr>
                                     </thead>
@@ -119,7 +114,7 @@
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="flex items-center">
                                                     <div class="flex flex-col gap-2">
-                                                        {{$ticket->grupo}}
+                                                        {!! $ticket->grupo !!}
                                                     </div>
                                                 </div>
                                             </td>
@@ -131,12 +126,11 @@
                                                 </div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap">
-                                                <div class="flex items-center ">
+                                                <!--<div class="flex items-center ">
                                                     <div class="flex flex-col gap-2">
                                                         <div class="grid gap-y-2">
                                                             <div class="flex items-center gap-x-3">
                                                                 <p class="flex items-center text-xs text-gray-500">
-                                                                    <!-- Heroicon name: solid/check-circle -->
                                                                     <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                                                                     </svg>
@@ -148,7 +142,6 @@
                                                             </div>
                                                             <div class="flex items-center gap-x-3">
                                                                 <p class="flex items-center text-xs text-gray-500">
-                                                                    <!-- Heroicon name: solid/check-circle -->
                                                                     <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                                                                     </svg>
@@ -160,7 +153,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </td>
                                         </tr>
                                     @endforeach

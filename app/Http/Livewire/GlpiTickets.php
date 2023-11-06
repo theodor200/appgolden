@@ -34,11 +34,11 @@ class GlpiTickets extends Component
             return [
                 'numero' => $numero_ticket,
                 'entidad' => $DOM->children()->eq(3)->children()->eq(0)->children()->eq(2)->text(),
-                'estado' => $DOM->children()->eq(4)->text(),//No
+                'estado' => $DOM->children()->eq(4)->text(),
                 'tipo' => $DOM->children()->eq(7)->text(),
                 'apertura' => $DOM->children()->eq(8)->text(),
                 'actualizacion' => $DOM->children()->eq(9)->text(),
-                'grupo' => $DOM->children()->eq(11)->text(),
+                'grupo' => str_replace(['N1','N2','N3','N4'],['<br>N1','<br>N2','<br>N3','<br>N4'],$DOM->children()->eq(11)->text()),
                 'tecnico' => $tecnico,
                 'locazion' => $DOM->children()->eq(13)->text(),
                 //'historico'=> array_filter($asignacion_historico->toArray(), function ($value){
