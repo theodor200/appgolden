@@ -54,6 +54,7 @@ Route::middleware([
 
     Route::get('/session_glpi/{cookie}', [\App\Http\Controllers\JobsController::class, 'session_glpi'])->name('session.glpi');
     Route::get('/sites', \App\Http\Livewire\Sites::class)->name('sites');
+    Route::get('/tickets', \App\Http\Livewire\GlpiTickets::class)->name('glpi.tickets');
     Route::get('/site-building', ShowSitesBuilding::class)->name('site.building');
     Route::get('/models/{customer}', ShowModels::class )->name('models');
     Route::get('/devices/{model}/{customer}', ShowDevices::class )->name('devices');
@@ -65,6 +66,6 @@ Route::middleware([
     Route::get('/suministros/{type}/{color}/{model}/{customer}', \App\Http\Livewire\ShowSuministros::class)->name('suministros');
 
     //GLPI
-    Route::get('/tickets', [\App\Http\Controllers\ControllerGlpi::class, 'listTickets'])->name('list.tickets.glpi');
+    //Route::get('/tickets', [\App\Http\Controllers\ControllerGlpi::class, 'listTickets'])->name('list.tickets.glpi');
 
 });
